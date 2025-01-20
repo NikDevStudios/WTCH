@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Luxury Watch Store offers exclusive, handcrafted watches and personalized services. Discover elegance and precision with our premium collection of timepieces.">
+  <meta name="keywords" content="luxury, watch store, exclusive, elegance, sophistication, personalized service">
+  <meta name="author" content="Luxury Watch Store">
+  <title>Luxury Watch Store - Redefining Timeless Elegance</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Navbar */
+    nav {
+      background-color: #000;
+      color: #fff;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #D4AF37; /* Gold */
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+      position: relative;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 15px;
+      transition: all 0.3s;
+    }
+
+    nav ul li a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #D4AF37; /* Gold */
+      z-index: -1;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s;
+    }
+
+    nav ul li a:hover::before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    nav ul li a:hover {
+      color: #000; /* Black text on hover */
+    }
+
+    /* Mobile Navbar */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background-color: #D4AF37;
+      margin: 4px 0;
+      transition: all 0.3s;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #000;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    header video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+
+    header h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    header p {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    header .btn {
+      background-color: #D4AF37; /* Gold */
+      color: #000;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    header .btn:hover {
+      background-color: #B8860B; /* Darker Gold */
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 0;
+    }
+
+    section h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+      text-align: center;
+      color: #D4AF37; /* Gold */
+    }
+
+    .watches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .watch {
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .watch img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .watch h3 {
+      margin: 20px 0 10px;
+      color: #D4AF37; /* Gold */
+    }
+
+    .watch p {
+      color: #ccc;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #1a1a1a;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    footer .footer-info {
+      margin-bottom: 20px;
+    }
+
+    footer .footer-info h3 {
+      color: #D4AF37; /* Gold */
+    }
+
+    footer .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    footer .footer-links ul li {
+      margin: 10px 0;
+    }
+
+    footer .footer-links ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer .footer-links ul li a:hover {
+      color: #D4AF37; /* Gold */
+    }
+
+    /* Contact Form */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    form input, form textarea {
+      padding: 10px;
+      border: 1px solid #D4AF37;
+      border-radius: 5px;
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+
+    form button {
+      background-color: #D4AF37;
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    form button:hover {
+      background-color: #B8860B;
+    }
+
+    /* Scroll Animations */
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s, transform 1s;
+    }
+
+    .scroll-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="container">
+      <a href="#home" class="logo">Luxury Watch Store</a>
+      <div class="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#watches">Watches</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header id="home">
+    <video autoplay muted loop>
+      <source src="Ontwerp zonder titel (1).mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="container">
+      <h1>Welcome to Luxury Watch Store</h1>
+      <p>Experience the epitome of precision and elegance with our exclusive, handcrafted watches.</p>
+      <a href="#watches" class="btn">Explore Our Collection</a>
+    </div>
+  </header>
+
+  <!-- Watches Section -->
+  <section id="watches" class="scroll-animate">
+    <div class="container">
+      <h2>Our Watches</h2>
+      <div class="watches-grid">
+        <div class="watch">
+          <img src="ROLEX-3-1.webp" alt="Luxury Watch 1">
+          <h3>Rolex Submariner</h3>
+          <p>Discover the iconic Rolex Submariner, a symbol of timeless elegance.</p>
+        </div>
+        <div class="watch">
+          <img src="Nautilus_Violett_gold2.webp" alt="Luxury Watch 2">
+          <h3>Patek Philippe Nautilus</h3>
+          <p>Experience the sophistication of the Patek Philippe Nautilus.</p>
+        </div>
+        <div class="watch">
+          <img src="introducing-audemars-piguet-royal-oak-jumbo-extra-thin-v0-fz6bHoWIVWTHN0-XpfdCHtbSi11E954ehCfjH5WMRV8.webp" alt="Luxury Watch 3">
+          <h3>Audemars Piguet Royal Oak</h3>
+          <p>Indulge in the luxury of the Audemars Piguet Royal Oak.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" class="scroll-animate">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>At Luxury Watch Store, we redefine elegance and precision. Our mission is to provide unparalleled luxury experiences through our exclusive, handcrafted watches and services. With a legacy of excellence, we cater to the most discerning clients worldwide.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="scroll-animate">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Have questions or need assistance? Reach out to us!</p>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-info">
+        <h3>Luxury Watch Store</h3>
+        <p>123 Time Avenue, Suite 456<br>New York, NY 10001</p>
+        <p>Email: info@luxurywatchstore.com<br>Phone: +1 (123) 456-7890</p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#watches">Watches</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Scroll Animations, Mobile Navbar, and Smooth Scrolling -->
+  <script>
+    // Scroll Animations
+    const scrollElements = document.querySelectorAll('.scroll-animate');
+
+    const elementInView = (el) => {
+      const elementTop = el.getBoundingClientRect().top;
+      return elementTop <= window.innerHeight * 0.75;
+    };
+
+    const displayScrollElement = (element) => {
+      element.classList.add('visible');
+    };
+
+    const handleScrollAnimation = () => {
+      scrollElements.forEach((el) => {
+        if (elementInView(el)) {
+          displayScrollElement(el);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', () => {
+      handleScrollAnimation();
+    });
+
+    // Initialize animations on page load
+    handleScrollAnimation();
+
+    // Mobile Navbar Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navUl = document.querySelector('nav ul');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navUl.classList.toggle('active');
+    });
+
+    // Smooth Scrolling for Navbar Links
+    document.querySelectorAll('nav ul li a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
