@@ -153,15 +153,28 @@
       overflow: hidden;
     }
 
-    header video {
+    header .header-images {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    header .header-images img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transform: translate(-50%, -50%);
-      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    header .header-images img.active {
+      opacity: 1;
     }
 
     header h1 {
@@ -325,10 +338,14 @@
 
   <!-- Header -->
   <header id="home">
-    <video autoplay muted loop>
-      <source src="Ontwerp zonder titel (1).mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+    <div class="header-images">
+      <img src="WTCH1.png" alt="Luxury Watch 1" class="active">
+      <img src="WTCH2.png" alt="Luxury Watch 2">
+      <img src="WTCH3.png" alt="Luxury Watch 3">
+      <img src="WTCH4.png" alt="Luxury Watch 4">
+      <img src="WTCH5.png" alt="Luxury Watch 5">
+      <img src="WTCH6.png" alt="Luxury Watch 6">
+    </div>
     <div class="container">
       <h1>Welcome to Luxury Watch Store</h1>
       <p>Experience the epitome of precision and elegance with our exclusive, handcrafted watches.</p>
@@ -342,17 +359,17 @@
       <h2>Our Watches</h2>
       <div class="watches-grid">
         <div class="watch">
-          <img src="ROLEX-3-1.webp" alt="Luxury Watch 1">
+          <img src="ROLEX-3-1.webp" alt="Rolex Submariner">
           <h3>Rolex Submariner</h3>
           <p>Discover the iconic Rolex Submariner, a symbol of timeless elegance.</p>
         </div>
         <div class="watch">
-          <img src="Nautilus_Violett_gold2.webp" alt="Luxury Watch 2">
+          <img src="Nautilus_Violett_gold2.webp" alt="Patek Philippe Nautilus">
           <h3>Patek Philippe Nautilus</h3>
           <p>Experience the sophistication of the Patek Philippe Nautilus.</p>
         </div>
         <div class="watch">
-          <img src="introducing-audemars-piguet-royal-oak-jumbo-extra-thin-v0-fz6bHoWIVWTHN0-XpfdCHtbSi11E954ehCfjH5WMRV8.webp" alt="Luxury Watch 3">
+          <img src="introducing-audemars-piguet-royal-oak-jumbo-extra-thin-v0-fz6bHoWIVWTHN0-XpfdCHtbSi11E954ehCfjH5WMRV8.webp" alt="Audemars Piguet Royal Oak">
           <h3>Audemars Piguet Royal Oak</h3>
           <p>Indulge in the luxury of the Audemars Piguet Royal Oak.</p>
         </div>
@@ -449,6 +466,18 @@
         });
       });
     });
+
+    // Header Image Carousel
+    const headerImages = document.querySelectorAll('.header-images img');
+    let currentImageIndex = 0;
+
+    function showNextImage() {
+      headerImages[currentImageIndex].classList.remove('active');
+      currentImageIndex = (currentImageIndex + 1) % headerImages.length;
+      headerImages[currentImageIndex].classList.add('active');
+    }
+
+    setInterval(showNextImage, 3500);
   </script>
 </body>
 </html>
